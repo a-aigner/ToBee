@@ -33,6 +33,7 @@ dependencies:
   flutter_ringtone_player: ^3.0.0
   curved_navigation_bar: ^1.0.3
   provider: ^6.1.2
+  audioplayers: ^6.1.0
 
   cupertino_icons: ^1.0.6
   intl: ^0.19.0
@@ -72,6 +73,8 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/sounds/lofi-alarm.mp3
+
     - lib/assets/images/
   #   - images/a_dot_ham.jpeg
 

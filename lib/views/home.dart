@@ -5,7 +5,7 @@ import 'package:to_bee/views/home1.dart';
 import 'package:to_bee/views/home2.dart';
 import 'package:to_bee/views/home_page.dart';
 import 'package:to_bee/views/pomodoro_timer.dart';
-import 'package:to_bee/views/pomodoro_timer_poage.dart';
+import 'package:to_bee/views/pomodoro_timer_page.dart';
 import 'package:to_bee/views/pprofile.dart';
 import 'package:to_bee/views/rewards.dart';
 import 'package:to_bee/views/tasks.dart';
