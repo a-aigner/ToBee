@@ -21,39 +21,69 @@ class AddTaskPage2 extends StatefulWidget {
 class _AddTaskPageState2 extends State<AddTaskPage2> {
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
-  DateTime? _selectedDate;
-  TimeOfDay? _selectedTime;
+  DateTime? _startDate;
+  TimeOfDay? _startTime;
+  DateTime? _endDate;
+  TimeOfDay? _endTime;
   String? _selectedSubject;
 
   final List<String> _subjects = ['Math', 'Science', 'History', 'Art', 'Music'];
 
-  // Function to show date picker
-  Future<void> _pickDate() async {
-    DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2101),
-    );
-    if (picked != null && picked != _selectedDate) {
-      setState(() {
-        _selectedDate = picked;
-      });
-    }
+  // Function to pick the start date
+Future<void> _pickStartDate() async {
+  DateTime? picked = await showDatePicker(
+    context: context,
+    initialDate: DateTime.now(),
+    firstDate: DateTime(2000),
+    lastDate: DateTime(2101),
+  );
+  if (picked != null && picked != _startDate) {
+    setState(() {
+      _startDate = picked;
+    });
   }
+}
 
-  // Function to show time picker
-  Future<void> _pickTime() async {
-    TimeOfDay? picked = await showTimePicker(
-      context: context,
-      initialTime: TimeOfDay.now(),
-    );
-    if (picked != null && picked != _selectedTime) {
-      setState(() {
-        _selectedTime = picked;
-      });
-    }
+// Function to pick the start time
+Future<void> _pickStartTime() async {
+  TimeOfDay? picked = await showTimePicker(
+    context: context,
+    initialTime: TimeOfDay.now(),
+  );
+  if (picked != null && picked != _startTime) {
+    setState(() {
+      _startTime = picked;
+    });
   }
+}
+
+// Function to pick the end date
+Future<void> _pickEndDate() async {
+  DateTime? picked = await showDatePicker(
+    context: context,
+    initialDate: DateTime.now(),
+    firstDate: DateTime(2000),
+    lastDate: DateTime(2101),
+  );
+  if (picked != null && picked != _endDate) {
+    setState(() {
+      _endDate = picked;
+    });
+  }
+}
+
+// Function to pick the end time
+Future<void> _pickEndTime() async {
+  TimeOfDay? picked = await showTimePicker(
+    context: context,
+    initialTime: TimeOfDay.now(),
+  );
+  if (picked != null && picked != _endTime) {
+    setState(() {
+      _endTime = picked;
+    });
+  }
+}
 
   final _formKey = GlobalKey<FormState>();
   String _taskTitle = '';
@@ -182,11 +212,11 @@ class _AddTaskPageState2 extends State<AddTaskPage2> {
                   ListTile(
                     leading: Icon(Icons.date_range),
                     title: Text(
-                      _selectedDate == null
+                      _startDate == null
                           ? 'Start Date'
-                          : DateFormat.yMMMd().format(_selectedDate!),
+                          : DateFormat.yMMMd().format(_startDate!),
                     ),
-                    onTap: _pickDate,
+                    onTap: _pickStartDate,
                   ),
                   SizedBox(height: 16),
 
@@ -194,21 +224,21 @@ class _AddTaskPageState2 extends State<AddTaskPage2> {
                   ListTile(
                     leading: Icon(Icons.access_time),
                     title: Text(
-                      _selectedTime == null
+                      _startTime == null
                           ? 'Start Time'
-                          : _selectedTime!.format(context),
+                          : _startTime!.format(context),
                     ),
-                    onTap: _pickTime,
+                    onTap: _pickStartTime,
                   ),
                   SizedBox(height: 16),
                   ListTile(
                     leading: Icon(Icons.date_range),
                     title: Text(
-                      _selectedDate == null
+                      _endDate == null
                           ? 'End Date'
-                          : DateFormat.yMMMd().format(_selectedDate!),
+                          : DateFormat.yMMMd().format(_endDate!),
                     ),
-                    onTap: _pickDate,
+                    onTap: _pickEndDate,
                   ),
                   SizedBox(height: 16),
 
@@ -216,11 +246,11 @@ class _AddTaskPageState2 extends State<AddTaskPage2> {
                   ListTile(
                     leading: Icon(Icons.access_time),
                     title: Text(
-                      _selectedTime == null
+                      _endTime == null
                           ? 'End Time'
-                          : _selectedTime!.format(context),
+                          : _endTime!.format(context),
                     ),
-                    onTap: _pickTime,
+                    onTap: _pickEndTime,
                   ),
                   SizedBox(height: 16),
                   // Subject dropdown
@@ -307,9 +337,9 @@ class _AddTaskPageState2 extends State<AddTaskPage2> {
   }
 
   void showSuccessMessage(String message) {
-    final snackBar = SnackBar(content: Text(message));
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-  }
+  final snackBar = SnackBar(content: Text(message));
+  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+}
 
    Future addTask() async {
 
@@ -346,31 +376,27 @@ final title =_titleController.text.toString();
       print('creation failed');
     }
   }
+  Future<void> submitData() async {
+  final title = _titleController.text.toString();
+  final description = _descriptionController.text.toString();
 
-    Future <void> submitData() async {
-      final title = _titleController.text.toString();
-      final description = _descriptionController.text.toString();
-      final body = {
+  if (title.isNotEmpty && description.isNotEmpty) {
+    final task = Task(
+      title: title,
+      description: description,
+      isCompleted: false,
+    );
 
-        "taskName": title,
-        "taskDescription": description,
+    // Save task locally using TaskProvider
+    Provider.of<TaskProvider>(context, listen: false).addTask(task);
 
-      };
-      final headers = {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer $token',
-      };
-      final url = 'http://tobee.runasp.net/api/TaskService';
-      final uri = Uri.parse(url);
-      final response = await http.post(uri, body: body, headers: headers);
-      if (response.statusCode == 201) {
-        print('success');
-        showSuccessMessage('creation success');
-      }
-      else {
-        print('creation failed');
-        print(response.body);
-      }
-    }
+    // Show success message and navigate back
+    showSuccessMessage('Task added successfully!');
+    Navigator.pop(context);
+  } else {
+    // Show error message if fields are empty
+    showSuccessMessage('Please fill in all fields!');
   }
+}
+}
 
