@@ -4,14 +4,24 @@ class RewardsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(40),
+        child: ClipRRect(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(30),
+          ),
+          child: AppBar(
+            automaticallyImplyLeading: false,
+            backgroundColor: Colors.deepPurple.shade100,
+            elevation: 0,
+            centerTitle: true,
+            title: const Text('Rewards',
+                style: TextStyle(
+                    color: Colors.deepPurple,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 25)),
+          ),
         ),
-        title: Text('Rewards'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -34,9 +44,7 @@ class RewardsPage extends StatelessWidget {
                     // Swap reward logic
                   },
                   child: Text('Swap Now'),
-                  style: ElevatedButton.styleFrom(
-
-                  ),
+                  style: ElevatedButton.styleFrom(),
                 ),
               ],
             ),
@@ -113,7 +121,6 @@ class RewardsPage extends StatelessWidget {
           ],
         ),
       ),
-
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // Add new functionality
@@ -157,4 +164,3 @@ class RewardHistoryItem extends StatelessWidget {
     );
   }
 }
-

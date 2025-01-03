@@ -13,6 +13,25 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(40),
+        child: ClipRRect(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(30),
+          ),
+          child: AppBar(
+            automaticallyImplyLeading: false,
+            backgroundColor: Colors.red.shade100,
+            elevation: 0,
+            centerTitle: true,
+            title: const Text('Profile',
+                style: TextStyle(
+                    color: Colors.red,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 25)),
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           // crossAxisAlignment: CrossAxisAlignment.start,
@@ -21,6 +40,7 @@ class _ProfileState extends State<Profile> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                /*
                 Row(
                   children: [
                     SizedBox(width: 5),
@@ -36,6 +56,7 @@ class _ProfileState extends State<Profile> {
                     ),
                   ],
                 ),
+                */
                 CircleAvatar(
                   radius: 70,
                   backgroundImage: AssetImage("lib/assets/images/photo.png"),

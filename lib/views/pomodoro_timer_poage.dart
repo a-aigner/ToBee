@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:to_bee/views/timer_page.dart';
 
-
 class PomodoroTimerPage extends StatelessWidget {
   // Simulated tasks, these will come from API in the future
   final List<Map<String, String>> tasks = [
@@ -12,7 +11,8 @@ class PomodoroTimerPage extends StatelessWidget {
     },
     {
       'title': 'أداء الفروض المنزلية',
-      'description': 'أداء الواجب المدرسي لمادة الرياضيات مع مذاكرة لمدة ساعتين لاختبار اللغة العربية',
+      'description':
+          'أداء الواجب المدرسي لمادة الرياضيات مع مذاكرة لمدة ساعتين لاختبار اللغة العربية',
       'time': '00:42:21'
     },
     {
@@ -30,14 +30,23 @@ class PomodoroTimerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.orange.shade100,
-        title: Text('Pomodoro Timer', style: TextStyle(color: Colors.orange)),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.orange),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(40),
+        child: ClipRRect(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(30),
+          ),
+          child: AppBar(
+            automaticallyImplyLeading: false,
+            backgroundColor: Colors.orange.shade100,
+            elevation: 0,
+            centerTitle: true,
+            title: const Text('Pomodoro Timer',
+                style: TextStyle(
+                    color: Colors.orange,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 25)),
+          ),
         ),
       ),
       body: Padding(
