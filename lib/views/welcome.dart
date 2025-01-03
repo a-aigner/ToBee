@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:to_bee/views/home.dart';
+//import 'package:to_bee/views/on_boarding.dart';
+import 'package:to_bee/views/on_boarding1.dart';
 //import 'package:to_bee/views/login_screen.dart';
 //import 'package:to_bee/views/sign_up.dart';
 
@@ -30,7 +32,9 @@ class _WelcomeState extends State<Welcome> {
             width: 430,
             height: 378,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(30),
+                ),
                 color: Color(0xffFFD3B2)),
             child: Column(
               children: [
@@ -59,26 +63,45 @@ class _WelcomeState extends State<Welcome> {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Container(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => Home()),
-                            );
-                          },
-                          icon: Icon(
-                            Icons.arrow_circle_right,
-                            size: 80,
-                            color: Color(0xffFE6C00),
-                          ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Home()),
+                        );
+                      },
+                      icon: Icon(
+                        Icons.arrow_circle_right,
+                        size: 80,
+                        color: Color(0xffFE6C00),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => OnBoarding1()),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xffFE6C00),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
                         ),
-                        /*
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      ),
+                      child: const Text(
+                        "Learn more",
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                      ),
+                    ),
+                    /*
                         SizedBox(
                           width: 130,
                           height: 50,
@@ -126,10 +149,10 @@ class _WelcomeState extends State<Welcome> {
                           ),
                         ),
                         */
-                      ],
-                    ),
-                  ),
+                  ],
                 ),
+                //),
+                //),
               ],
             ),
           ),

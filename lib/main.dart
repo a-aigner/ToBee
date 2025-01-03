@@ -11,15 +11,15 @@ import 'package:to_bee/views/pomodoro_timer_poage.dart';
 import 'package:to_bee/views/pprofile.dart';
 import 'package:to_bee/views/tasks.dart';
 import 'package:to_bee/views/tasks2.dart';
+import 'package:to_bee/views/welcome.dart';
 
 void main() {
-  runApp( MultiProvider(
+  runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (_) => TaskProvider()),
     ],
     child: MyApp(),
-  )
-  );
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -29,9 +29,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-
-      home:OnBoarding()
+      home: Welcome(),
     );
   }
 }
-
