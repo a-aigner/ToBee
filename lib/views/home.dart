@@ -12,8 +12,6 @@ import 'package:to_bee/views/tasks.dart';
 
 /// I put curvednavigationbar to navigate between screens.
 
-
-
 class Home extends StatefulWidget {
   Home({super.key});
 
@@ -25,13 +23,11 @@ class _HomeState extends State<Home> {
   final navigationKey = GlobalKey<CurvedNavigationBarState>();
 
   int index = 0;
-bool INDEX =true;
+  bool INDEX = true;
   final screens = [
     TaskListPage2(),
     PomodoroTimerPage(),
-RewardsPage(),
-
-
+    RewardsPage(),
     Profile(),
   ];
 
@@ -39,25 +35,23 @@ RewardsPage(),
   Widget build(BuildContext context) {
     // ignore: prefer_const_constructors
     final items = <Widget>[
-      Icon(Icons.home, size: 30),
-
-      Icon(Icons.timer, size: 30),
-
-      Icon(Icons.card_giftcard, size: 30),
-      Icon(Icons.person, size: 30),
+      Icon(Icons.home, color: Colors.white, size: 35),
+      Icon(Icons.timer, color: Colors.orange, size: 35),
+      Icon(Icons.card_giftcard, color: Colors.deepPurple, size: 35),
+      Icon(Icons.person, color: Colors.deepOrange, size: 35),
     ];
     return Scaffold(
       extendBody: true,
       body: screens[index],
       bottomNavigationBar: Theme(
         data: Theme.of(context)
-            .copyWith(iconTheme: IconThemeData(color:  Colors.white)),
+            .copyWith(iconTheme: IconThemeData(color: Colors.white)),
         child: CurvedNavigationBar(
             key: navigationKey,
             backgroundColor: Colors.transparent,
             animationDuration: Duration(milliseconds: 300),
-            color: Colors.black,
-            buttonBackgroundColor: Colors.orange,
+            color: const Color.fromARGB(250, 25, 25, 25),
+            //buttonBackgroundColor: Colors.orange,
             height: 60,
             index: index,
             items: items,

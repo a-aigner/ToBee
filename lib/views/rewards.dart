@@ -4,6 +4,7 @@ class RewardsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.deepPurple.shade50,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(40),
         child: ClipRRect(

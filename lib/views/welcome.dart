@@ -43,21 +43,24 @@ class _WelcomeState extends State<Welcome> {
                   "Welcome",
                   style: TextStyle(
                       color: Color(0xff333333),
-                      fontSize: 20,
+                      fontSize: 30,
                       fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 20),
                 Container(
-                  width: 365,
+                  width: 250,
                   height: 108,
                   child: Column(
                     children: [
-                      const Text(
-                        "ToDo helps you organize \nyour day and achive your \ngoals effortlessly. ",
-                        style: TextStyle(
-                          color: Color(0xff707070),
-                          fontSize: 18.5,
-                          fontWeight: FontWeight.bold,
+                      Center(
+                        child: const Text(
+                          "ToDo helps you organize your day and achive your goals effortlessly. ",
+                          style: TextStyle(
+                            color: Color(0xff707070),
+                            fontSize: 18.5,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
                       ),
                     ],
@@ -101,58 +104,8 @@ class _WelcomeState extends State<Welcome> {
                         style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
                     ),
-                    /*
-                        SizedBox(
-                          width: 130,
-                          height: 50,
-                          child: MaterialButton(
-                            color: Colors.white,
-                            shape: RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(25)),
-                                side: BorderSide(
-                                    width: 2, color: Color(0xffFE6C00))),
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Login()));
-                            },
-                            child: Text(
-                              "Sign In",
-                              style: TextStyle(
-                                  fontSize: 15, color: Color(0xffFE6C00)),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 130,
-                          height: 50,
-                          child: MaterialButton(
-                            color: Color(0xffFE6C00),
-                            shape: RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(25)),
-                                side: BorderSide(
-                                    width: 2, color: Color(0xffFE6C00))),
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => SignUp()));
-                            },
-                            child: Text(
-                              "Sign Up",
-                              style:
-                                  TextStyle(fontSize: 15, color: Colors.white),
-                            ),
-                          ),
-                        ),
-                        */
                   ],
                 ),
-                //),
-                //),
               ],
             ),
           ),

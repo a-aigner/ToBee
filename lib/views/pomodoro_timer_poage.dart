@@ -30,6 +30,7 @@ class PomodoroTimerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.orange.shade50,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(40),
         child: ClipRRect(

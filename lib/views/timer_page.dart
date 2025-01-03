@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:to_bee/views/pomodoro_timer_poage.dart';
 
 class TimerPage extends StatefulWidget {
   final String taskTitle;
@@ -86,20 +87,32 @@ class _TimerPageState extends State<TimerPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.orange.shade100,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.orange),
-          onPressed: () {
-            if (timer.isActive) {
-              timer.cancel(); // Stop the timer when going back
-            }
-            Navigator.pop(context);
-          },
-        ),
-        title: Text(
-          widget.taskTitle,
-          style: TextStyle(color: Colors.orange),
+      backgroundColor: Colors.orange.shade50,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(40),
+        child: ClipRRect(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(30),
+          ),
+          child: AppBar(
+            backgroundColor: Colors.orange.shade100,
+            elevation: 0,
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back, color: Colors.orange),
+              onPressed: () {
+                Navigator.pop(context);
+                if (timer.isActive) {
+                  timer.cancel(); // Stop the timer when going back
+                }
+              },
+            ),
+            centerTitle: true,
+            title: Text(widget.taskTitle,
+                style: TextStyle(
+                    color: Colors.orange,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 25)),
+          ),
         ),
       ),
       body: Padding(
@@ -114,7 +127,11 @@ class _TimerPageState extends State<TimerPage> {
             ),
             SizedBox(height: 20),
             Text(
-              isCompleted ? "Completed!" : isRunning ? "In progress" : "Paused",
+              isCompleted
+                  ? "Completed!"
+                  : isRunning
+                      ? "In progress"
+                      : "Paused",
               style: TextStyle(fontSize: 20, color: Colors.orange),
             ),
             SizedBox(height: 20),
@@ -123,7 +140,8 @@ class _TimerPageState extends State<TimerPage> {
               children: [
                 CircularProgressIndicator(
                   value: duration.inSeconds > 0
-                      ? duration.inSeconds / (25 * 60) // Adjust progress based on Pomodoro time
+                      ? duration.inSeconds /
+                          (25 * 60) // Adjust progress based on Pomodoro time
                       : 0.0,
                   strokeWidth: 6,
                   backgroundColor: Colors.grey.shade200,
@@ -136,7 +154,8 @@ class _TimerPageState extends State<TimerPage> {
               ],
             ),
             SizedBox(height: 20),
-            if (!isRunning && !isCompleted) // Show Pomodoro options before timer starts
+            if (!isRunning &&
+                !isCompleted) // Show Pomodoro options before timer starts
               Column(
                 children: [
                   Text(
@@ -144,43 +163,45 @@ class _TimerPageState extends State<TimerPage> {
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 10),
-                  Column( crossAxisAlignment: CrossAxisAlignment.center,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          ElevatedButton(
-                            onPressed: () => selectPomodoroDuration("Work"),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.orange,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            ElevatedButton(
+                              onPressed: () => selectPomodoroDuration("Work"),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.orange,
+                              ),
+                              child: Text(
+                                "Work (25 min)",
+                                style: TextStyle(fontSize: 14),
+                              ),
                             ),
-                            child: Text(
-                              "Work (25 min)",
-                              style: TextStyle(fontSize: 14),
+                            ElevatedButton(
+                              onPressed: () =>
+                                  selectPomodoroDuration("Short Break"),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.orange.shade300,
+                              ),
+                              child: Text(
+                                "Short Break (5 min)",
+                                style: TextStyle(fontSize: 14),
+                              ),
                             ),
-                          ),
-                          ElevatedButton(
-                            onPressed: () => selectPomodoroDuration("Short Break"),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.orange.shade300,
-                            ),
-                            child: Text(
-                              "Short Break (5 min)",
-                              style: TextStyle(fontSize: 14),
-                            ),
-                          ),])
-                          ,ElevatedButton(
-                            onPressed: () => selectPomodoroDuration("Long Break"),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.orange.shade400,
-                            ),
-                            child: Text(
-                              "Long Break (15 min)",
-                              style: TextStyle(fontSize: 14),
-                            ),
-                          ),
-                        ],
-
+                          ]),
+                      ElevatedButton(
+                        onPressed: () => selectPomodoroDuration("Long Break"),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.orange.shade400,
+                        ),
+                        child: Text(
+                          "Long Break (15 min)",
+                          style: TextStyle(fontSize: 14),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
