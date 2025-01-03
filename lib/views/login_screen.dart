@@ -1,4 +1,3 @@
-/*
 import 'package:flutter/material.dart';
 import 'package:to_bee/views/home.dart';
 import 'package:to_bee/views/home_page.dart';
@@ -32,7 +31,7 @@ class _LoginState extends State<Login> {
                 IconButton(
                   onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Welcome()));
+                        MaterialPageRoute(builder: (context) => Home()));
                   },
                   icon: Icon(Icons.arrow_back),
                   iconSize: 30,
@@ -231,4 +230,3 @@ class _LoginState extends State<Login> {
     );
   }
 }
-*/

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'package:to_bee/views/login_screen.dart';
+import 'package:to_bee/views/login_screen.dart';
 import 'package:to_bee/views/setting.dart';
 
 class Profile extends StatefulWidget {
@@ -13,6 +13,7 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.deepOrange.shade50,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(40),
         child: ClipRRect(
@@ -21,121 +22,92 @@ class _ProfileState extends State<Profile> {
           ),
           child: AppBar(
             automaticallyImplyLeading: false,
-            backgroundColor: Colors.red.shade100,
+            backgroundColor: Colors.deepOrange.shade100,
             elevation: 0,
             centerTitle: true,
-            title: const Text('Profile',
-                style: TextStyle(
-                    color: Colors.red,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 25)),
+            title: const Text(
+              'Profile',
+              style: TextStyle(
+                color: Colors.deepOrange,
+                fontWeight: FontWeight.w700,
+                fontSize: 25,
+              ),
+            ),
           ),
         ),
       ),
       body: SingleChildScrollView(
         child: Column(
-          // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 20),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                /*
-                Row(
+                Padding(
+                  padding: EdgeInsets.only(left: 16, top: 20),
+                  child: CircleAvatar(
+                    radius: 50,
+                    backgroundImage:
+                        AssetImage("lib/assets/images/default_profile.jpg"),
+                  ),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(width: 5),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.arrow_circle_left_outlined,
-                          color: Colors.orange, size: 40),
+                    Padding(
+                      padding: EdgeInsets.only(left: 16, top: 30),
+                      child: const Text(
+                        "Name",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25,
+                        ),
+                      ),
                     ),
-                    SizedBox(width: 80),
-                    const Text(
-                      "Profile",
-                      style: TextStyle(color: Colors.orange, fontSize: 20),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16, top: 10),
+                      child: const Text(
+                        "@Username",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      ),
                     ),
                   ],
                 ),
-                */
-                CircleAvatar(
-                  radius: 70,
-                  backgroundImage: AssetImage("lib/assets/images/photo.png"),
-                ),
-                SizedBox(height: 5),
-                const Text(
-                  "Yossif Gharep",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-                const Text(
-                  "Graduated/works as UI/UX",
-                  style: TextStyle(
-                    color: Color(0xffBDACFF),
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const Text(
-                  "designer",
-                  style: TextStyle(
-                    color: Color(0xffBDACFF),
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 20),
+                Spacer(),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        width: 153,
-                        height: 57,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color: Colors.black,
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(width: 1, color: Colors.orange),
-                        ),
-                        child: Text(
-                          "10 Task left",
-                          style: TextStyle(color: Colors.orange),
-                        ),
+                  padding: EdgeInsets.only(right: 16, top: 20),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Login()),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.deepOrange,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
                       ),
-                      Container(
-                        width: 153,
-                        height: 57,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.black,
-                          border: Border.all(width: 1, color: Colors.orange),
-                        ),
-                        child: const Text(
-                          "5 Task done",
-                          style: TextStyle(color: Colors.orange),
-                        ),
-                      ),
-                    ],
+                    ),
+                    child: const Text(
+                      "Sign in",
+                      style: TextStyle(color: Colors.white, fontSize: 14),
+                    ),
                   ),
-                ),
-                MaterialButton(
-                  onPressed: () {},
-                  minWidth: 153,
-                  height: 47,
-                  color: Colors.black,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    side: BorderSide(width: 3, color: Colors.orange),
-                  ),
-                  child: const Text("Task Report",
-                      style: TextStyle(color: Colors.orange)),
                 ),
               ],
+            ),
+            SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: Divider(
+                color: Colors.deepOrange,
+                thickness: 1.5,
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(20.0),
@@ -143,269 +115,90 @@ class _ProfileState extends State<Profile> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text("Settings",
-                            style: TextStyle(color: Color(0xffAFAFAF))),
-                        SizedBox(height: 5),
-                        SingleChildScrollView(
-                          child: Row(
-                            children: [
-                              Icon(Icons.settings, color: Colors.orange),
-                              SizedBox(width: 10),
-                              const Text(
-                                "App Settings",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                  fontSize: 17,
-                                ),
-                              ),
-                              SizedBox(width: 112),
-                              IconButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Setting()));
-                                },
-                                icon: Icon(Icons.arrow_forward_ios,
-                                    color: Colors.orange),
-                              ),
-                            ],
+                    SizedBox(height: 20),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Setting()),
+                        );
+                      },
+                      child: Row(
+                        children: [
+                          Icon(Icons.settings,
+                              color: Colors.deepOrange, size: 30),
+                          SizedBox(width: 10),
+                          const Text(
+                            "Settings",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                              fontSize: 20,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                    SizedBox(height: 10),
-                    Column(
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              "Account",
-                              style: TextStyle(
-                                color: Color(0xffAFAFAF),
-                              ),
+                    SizedBox(height: 20),
+                    GestureDetector(
+                      onTap: () {
+                        //Action for "Help & Feedback"
+                      },
+                      child: Row(
+                        children: [
+                          Icon(Icons.help, color: Colors.deepOrange, size: 30),
+                          SizedBox(width: 10),
+                          const Text(
+                            "Help & Feedback",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                              fontSize: 20,
                             ),
-                            SizedBox(height: 5),
-                            Row(
-                              children: [
-                                Icon(Icons.person, color: Colors.orange),
-                                SizedBox(width: 10),
-                                const Text(
-                                  "Change account name",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
-                                    fontSize: 17,
-                                  ),
-                                ),
-                                SizedBox(width: 37),
-                                IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(Icons.arrow_forward_ios,
-                                      color: Colors.orange),
-                                ),
-                              ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    GestureDetector(
+                      onTap: () {
+                        //Action for "About Us"
+                      },
+                      child: Row(
+                        children: [
+                          Icon(Icons.menu, color: Colors.deepOrange, size: 30),
+                          SizedBox(width: 10),
+                          const Text(
+                            "About US",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                              fontSize: 20,
                             ),
-                            Row(
-                              children: [
-                                Icon(Icons.vpn_key, color: Colors.orange),
-                                SizedBox(width: 10),
-                                const Text(
-                                  "Change account password",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
-                                    fontSize: 17,
-                                  ),
-                                ),
-                                SizedBox(width: 8),
-                                IconButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => Setting(),
-                                      ),
-                                    );
-                                  },
-                                  icon: Icon(Icons.arrow_forward_ios,
-                                      color: Colors.orange),
-                                ),
-                              ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    GestureDetector(
+                      onTap: () {
+                        //Action for "Support Us"
+                      },
+                      child: Row(
+                        children: [
+                          Icon(Icons.favorite,
+                              color: Colors.deepOrange, size: 30),
+                          SizedBox(width: 10),
+                          const Text(
+                            "Support US",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                              fontSize: 20,
                             ),
-                            Row(
-                              children: [
-                                Icon(Icons.add_a_photo, color: Colors.orange),
-                                SizedBox(width: 10),
-                                const Text(
-                                  "Change account image",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
-                                    fontSize: 17,
-                                  ),
-                                ),
-                                SizedBox(width: 32),
-                                IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(Icons.arrow_forward_ios),
-                                  color: Colors.orange,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 10),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              "Uptodo",
-                              style: TextStyle(color: Color(0xffAFAFAF)),
-                            ),
-                            Row(
-                              children: [
-                                Icon(Icons.menu, color: Colors.orange),
-                                SizedBox(width: 10),
-                                const Text(
-                                  "About US",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
-                                    fontSize: 17,
-                                  ),
-                                ),
-                                SizedBox(width: 136),
-                                IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(Icons.arrow_forward_ios,
-                                      color: Colors.orange),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Icon(Icons.info_outline, color: Colors.orange),
-                            SizedBox(width: 10),
-                            const Text(
-                              "FAQ",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black,
-                                fontSize: 17,
-                              ),
-                            ),
-                            SizedBox(width: 180),
-                            IconButton(
-                              onPressed: () {},
-                              icon: Icon(Icons.arrow_forward_ios,
-                                  color: Colors.orange),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Icon(Icons.flash_on, color: Colors.orange),
-                            SizedBox(width: 10),
-                            const Text(
-                              "Help & Feedback",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black,
-                                fontSize: 17,
-                              ),
-                            ),
-                            SizedBox(width: 80),
-                            IconButton(
-                              onPressed: () {},
-                              icon: Icon(Icons.arrow_forward_ios,
-                                  color: Colors.orange),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.favorite,
-                              color: Colors.orange,
-                            ),
-                            SizedBox(width: 10),
-                            const Text(
-                              "Support US",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black,
-                                fontSize: 17,
-                              ),
-                            ),
-                            SizedBox(width: 120),
-                            IconButton(
-                              onPressed: () {},
-                              icon: Icon(Icons.arrow_forward_ios,
-                                  color: Colors.orange),
-                            ),
-                          ],
-                        ),
-                        /*
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            IconButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Login()));
-                                },
-                                icon: Icon(Icons.logout,
-                                    color: Color(0xffFF4949))),
-                            TextButton(
-                              child: Text("Log Out",
-                                  style: TextStyle(
-                                      color: Color(0xffFF4949), fontSize: 16)),
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Login()));
-                              },
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            IconButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Login()));
-                                },
-                                icon: Icon(Icons.logout,
-                                    color: Color(0xffFF4949))),
-                            TextButton(
-                              child: Text("Log Out",
-                                  style: TextStyle(
-                                      color: Color(0xffFF4949), fontSize: 16)),
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Login()));
-                              },
-                            ),
-                          ],
-                        ),
-                        */
-                      ],
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
