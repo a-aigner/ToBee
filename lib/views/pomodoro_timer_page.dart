@@ -32,9 +32,9 @@ class PomodoroTimerPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.orange.shade50,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(40),
+        preferredSize: const Size.fromHeight(40),
         child: ClipRRect(
-          borderRadius: BorderRadius.vertical(
+          borderRadius: const BorderRadius.vertical(
             bottom: Radius.circular(30),
           ),
           child: AppBar(
@@ -42,11 +42,14 @@ class PomodoroTimerPage extends StatelessWidget {
             backgroundColor: Colors.orange.shade100,
             elevation: 0,
             centerTitle: true,
-            title: const Text('Pomodoro Timer',
-                style: TextStyle(
-                    color: Colors.orange,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 25)),
+            title: const Text(
+              'Pomodoro Timer',
+              style: TextStyle(
+                color: Colors.orange,
+                fontWeight: FontWeight.w700,
+                fontSize: 25,
+              ),
+            ),
           ),
         ),
       ),
@@ -56,12 +59,12 @@ class PomodoroTimerPage extends StatelessWidget {
           children: [
             // Timer section at the top
             Container(
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: Colors.orange.shade100,
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
@@ -82,7 +85,7 @@ class PomodoroTimerPage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             // Task list
             Expanded(
               child: ListView.builder(
@@ -102,12 +105,12 @@ class PomodoroTimerPage extends StatelessWidget {
                       );
                     },
                     child: Card(
-                      margin: EdgeInsets.symmetric(vertical: 10),
+                      margin: const EdgeInsets.symmetric(vertical: 10),
                       child: ListTile(
-                        leading: Icon(Icons.timer, color: Colors.orange),
+                        leading: const Icon(Icons.timer, color: Colors.orange),
                         title: Text(
                           task['title']!,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                         subtitle: Text(task['description']!),
@@ -123,7 +126,7 @@ class PomodoroTimerPage extends StatelessWidget {
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: 1, // Index of the timer tab
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
@@ -135,6 +138,10 @@ class PomodoroTimerPage extends StatelessWidget {
           BottomNavigationBarItem(
             icon: Icon(Icons.card_giftcard),
             label: 'Rewards',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.notifications),
+            label: 'Notifications',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),

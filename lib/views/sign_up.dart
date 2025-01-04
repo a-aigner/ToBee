@@ -1,10 +1,7 @@
-//import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-//import 'package:provider/single_child_widget.dart';
-import 'package:to_bee/views/home_page.dart';
 import 'package:to_bee/views/login_screen.dart';
-//import 'package:to_bee/views/sign_up.dart';
 import 'package:to_bee/views/welcome.dart';
+import 'package:to_bee/views/home.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -207,7 +204,7 @@ class _SignUp extends State<SignUp> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => MyHomePage(),
+                                  builder: (context) => Home(),
                                 ),
                               );
                             },
