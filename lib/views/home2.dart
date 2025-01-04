@@ -67,7 +67,7 @@ class _TaskListPageState2 extends State<TaskListPage2> {
           children: [
             Container(
               width: 430,
-              height: 120,
+              height: 105,
               decoration: BoxDecoration(
                 color: Color(0xffFFD3B2),
                 borderRadius: BorderRadius.only(
@@ -76,37 +76,20 @@ class _TaskListPageState2 extends State<TaskListPage2> {
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsets.only(top: 20.0),
+                padding: const EdgeInsets.only(top: 10),
                 child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      SizedBox(width: 100),
-                      Container(
-                          width: 130,
-                          height: 100,
-                          child: Image.asset("lib/assets/images/Group305.png",
-                              fit: BoxFit.fill)),
-                      SizedBox(width: 25),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => NotificationPage()),
-                          );
-                          //Open Notification Center
-                        },
-                        child: Container(
-                          width: 40,
-                          height: 40,
-                          child: Image.asset(
-                              "lib/assets/images/mdi_bell-notification.png"),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 30,
-                      )
-                    ]),
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    SizedBox(width: 100),
+                    Container(
+                        width: 130,
+                        height: 100,
+                        child: Image.asset("lib/assets/images/Group305.png",
+                            fit: BoxFit.fill)),
+                    SizedBox(width: 25),
+                    SizedBox(width: 30),
+                  ],
+                ),
               ),
             ),
             // Daily Tasks

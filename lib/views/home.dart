@@ -9,6 +9,7 @@ import 'package:to_bee/views/pomodoro_timer_poage.dart';
 import 'package:to_bee/views/pprofile.dart';
 import 'package:to_bee/views/rewards.dart';
 import 'package:to_bee/views/tasks.dart';
+import 'package:to_bee/views/notification.dart';
 
 /// I put curvednavigationbar to navigate between screens.
 
@@ -28,6 +29,7 @@ class _HomeState extends State<Home> {
     TaskListPage2(),
     PomodoroTimerPage(),
     RewardsPage(),
+    NotificationPage(),
     Profile(),
   ];
 
@@ -38,6 +40,8 @@ class _HomeState extends State<Home> {
       Icon(Icons.home, color: Colors.white, size: 35),
       Icon(Icons.timer, color: Colors.orange, size: 35),
       Icon(Icons.card_giftcard, color: Colors.deepPurple, size: 35),
+      Icon(Icons.notifications,
+          color: const Color.fromARGB(255, 250, 190, 10), size: 35),
       Icon(Icons.person, color: Colors.deepOrange, size: 35),
     ];
     return Scaffold(

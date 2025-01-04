@@ -11,7 +11,7 @@ class _NotificationState extends State<NotificationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepOrange.shade50,
+      backgroundColor: Colors.yellow.shade50,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(40),
         child: ClipRRect(
@@ -19,19 +19,14 @@ class _NotificationState extends State<NotificationPage> {
             bottom: Radius.circular(30),
           ),
           child: AppBar(
-            backgroundColor: Colors.deepOrange.shade100,
+            automaticallyImplyLeading: false,
+            backgroundColor: Colors.yellow.shade100,
             elevation: 0,
             centerTitle: true,
-            leading: IconButton(
-              icon: Icon(Icons.arrow_back, color: Colors.deepOrange),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
             title: const Text(
               'Notifications',
               style: TextStyle(
-                color: Colors.deepOrange,
+                color: const Color.fromARGB(255, 250, 190, 10),
                 fontWeight: FontWeight.w700,
                 fontSize: 25,
               ),
@@ -61,7 +56,7 @@ class _NotificationState extends State<NotificationPage> {
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: Colors.orange,
+                color: const Color.fromARGB(255, 250, 190, 10),
               ),
             ),
           ),
