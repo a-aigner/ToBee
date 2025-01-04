@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
 class RewardsPage extends StatelessWidget {
+  const RewardsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.deepPurple.shade50,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(40),
+        preferredSize: const Size.fromHeight(40),
         child: ClipRRect(
-          borderRadius: BorderRadius.vertical(
+          borderRadius: const BorderRadius.vertical(
             bottom: Radius.circular(30),
           ),
           child: AppBar(
@@ -16,11 +18,14 @@ class RewardsPage extends StatelessWidget {
             backgroundColor: Colors.deepPurple.shade100,
             elevation: 0,
             centerTitle: true,
-            title: const Text('Rewards',
-                style: TextStyle(
-                    color: Colors.deepPurple,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 25)),
+            title: const Text(
+              'Rewards',
+              style: TextStyle(
+                color: Colors.deepPurple,
+                fontWeight: FontWeight.w700,
+                fontSize: 25,
+              ),
+            ),
           ),
         ),
       ),
@@ -33,7 +38,7 @@ class RewardsPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   'Point collected',
                   style: TextStyle(
                     fontSize: 20.0,
@@ -44,18 +49,18 @@ class RewardsPage extends StatelessWidget {
                   onPressed: () {
                     // Swap reward logic
                   },
-                  child: Text('Swap Now'),
                   style: ElevatedButton.styleFrom(),
+                  child: const Text('Swap Now'),
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Container(
               padding: const EdgeInsets.all(16.0),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(12),
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
                     color: Colors.black12,
                     blurRadius: 5,
@@ -63,7 +68,7 @@ class RewardsPage extends StatelessWidget {
                   ),
                 ],
               ),
-              child: Row(
+              child: const Row(
                 children: [
                   // XP Icon or Image
                   Icon(Icons.star, color: Colors.orange, size: 40),
@@ -79,13 +84,13 @@ class RewardsPage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
 
             // History section
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   'History',
                   style: TextStyle(
                     fontSize: 18.0,
@@ -96,13 +101,13 @@ class RewardsPage extends StatelessWidget {
                   onPressed: () {
                     // See All history logic
                   },
-                  child: Text('See All'),
+                  child: const Text('See All'),
                 ),
               ],
             ),
             Expanded(
               child: ListView(
-                children: [
+                children: const [
                   RewardHistoryItem(
                     points: -100,
                     description: 'Swap reward',
@@ -122,13 +127,6 @@ class RewardsPage extends StatelessWidget {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Add new functionality
-        },
-        child: Icon(Icons.add),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
@@ -138,7 +136,8 @@ class RewardHistoryItem extends StatelessWidget {
   final String description;
   final bool isNegative;
 
-  RewardHistoryItem({
+  const RewardHistoryItem({
+    super.key,
     required this.points,
     required this.description,
     this.isNegative = false,

@@ -13,9 +13,9 @@ class _NotificationState extends State<NotificationPage> {
     return Scaffold(
       backgroundColor: Colors.yellow.shade50,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(40),
+        preferredSize: const Size.fromHeight(40),
         child: ClipRRect(
-          borderRadius: BorderRadius.vertical(
+          borderRadius: const BorderRadius.vertical(
             bottom: Radius.circular(30),
           ),
           child: AppBar(
@@ -26,7 +26,7 @@ class _NotificationState extends State<NotificationPage> {
             title: const Text(
               'Notifications',
               style: TextStyle(
-                color: const Color.fromARGB(255, 250, 190, 10),
+                color: Color.fromARGB(255, 250, 190, 10),
                 fontWeight: FontWeight.w700,
                 fontSize: 25,
               ),
@@ -46,17 +46,17 @@ class _NotificationState extends State<NotificationPage> {
                 color: Colors.black.withOpacity(0.3),
                 spreadRadius: 7,
                 blurRadius: 10,
-                offset: Offset(0, 0),
+                offset: const Offset(0, 0),
               ),
             ],
           ),
-          child: Center(
+          child: const Center(
             child: Text(
               'Coming Soon',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: const Color.fromARGB(255, 250, 190, 10),
+                color: Color.fromARGB(255, 250, 190, 10),
               ),
             ),
           ),

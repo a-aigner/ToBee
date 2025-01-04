@@ -33,17 +33,16 @@ class _SettingState extends State<Setting> {
     return Scaffold(
       backgroundColor: Colors.orange.shade50,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(40),
+        preferredSize: const Size.fromHeight(40),
         child: ClipRRect(
-          borderRadius: BorderRadius.vertical(
+          borderRadius: const BorderRadius.vertical(
             bottom: Radius.circular(30),
           ),
           child: AppBar(
-            //automaticallyImplyLeading: false,
             backgroundColor: Colors.orange.shade100,
             elevation: 0,
             leading: IconButton(
-              icon: Icon(Icons.arrow_back, color: Colors.orange),
+              icon: const Icon(Icons.arrow_back, color: Colors.orange),
               onPressed: () {
                 Navigator.pop(context);
               },
@@ -70,14 +69,19 @@ class _SettingState extends State<Setting> {
                 onPressed: _toggleAccountExpansion,
                 child: Row(
                   children: [
-                    Icon(Icons.account_circle, color: Colors.orange, size: 40),
-                    SizedBox(width: 10),
+                    const Icon(
+                      Icons.account_circle,
+                      color: Colors.orange,
+                      size: 40,
+                    ),
+                    const SizedBox(width: 10),
                     Text(
                       _isAccountExpanded ? 'Account' : 'Account',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 20),
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 20,
+                      ),
                     ),
                   ],
                 ),
@@ -87,8 +91,8 @@ class _SettingState extends State<Setting> {
                   onTap: () {
                     //Action for "Change Account Name"
                   },
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 40, top: 20),
+                  child: const Padding(
+                    padding: EdgeInsets.only(left: 40, top: 20),
                     child: Row(
                       children: [
                         Icon(Icons.person, color: Colors.orange, size: 25),
@@ -105,13 +109,12 @@ class _SettingState extends State<Setting> {
                     ),
                   ),
                 ),
-                //SizedBox(height: 10),
                 GestureDetector(
                   onTap: () {
                     //Action for "Change Avatar"
                   },
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 40, top: 20),
+                  child: const Padding(
+                    padding: EdgeInsets.only(left: 40, top: 20),
                     child: Row(
                       children: [
                         Icon(Icons.photo, color: Colors.orange, size: 25),
@@ -132,8 +135,8 @@ class _SettingState extends State<Setting> {
                   onTap: () {
                     //Action for "Change Password"
                   },
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 40, top: 20),
+                  child: const Padding(
+                    padding: EdgeInsets.only(left: 40, top: 20),
                     child: Row(
                       children: [
                         Icon(Icons.key, color: Colors.orange, size: 25),
@@ -154,8 +157,8 @@ class _SettingState extends State<Setting> {
                   onTap: () {
                     //Action for "Change Email"
                   },
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 40, top: 20),
+                  child: const Padding(
+                    padding: EdgeInsets.only(left: 40, top: 20),
                     child: Row(
                       children: [
                         Icon(Icons.email, color: Colors.orange, size: 25),
@@ -173,42 +176,44 @@ class _SettingState extends State<Setting> {
                   ),
                 ),
               ],
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextButton(
                 onPressed: _toggleSettingsExpansion,
                 child: Row(
                   children: [
-                    Icon(Icons.notifications, color: Colors.orange, size: 40),
-                    SizedBox(width: 10),
+                    const Icon(Icons.notifications,
+                        color: Colors.orange, size: 40),
+                    const SizedBox(width: 10),
                     Text(
                       _isSettingsExpanded ? 'Notifications' : 'Notifications',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 20),
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 20,
+                      ),
                     ),
                   ],
                 ),
               ),
               if (_isSettingsExpanded) ...[],
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextButton(
                 onPressed: _toggleSettingsExpansion,
                 child: Row(
                   children: [
-                    Icon(Icons.tune, color: Colors.orange, size: 40),
-                    SizedBox(width: 10),
+                    const Icon(Icons.tune, color: Colors.orange, size: 40),
+                    const SizedBox(width: 10),
                     Text(
                       _isSettingsExpanded ? 'Preferences' : 'Preferences',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 20),
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 20,
+                      ),
                     ),
                   ],
                 ),
               ),
-              if (_isSettingsExpanded) ...[],
             ],
           ),
         ),
