@@ -1,34 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:to_bee/views/timer_page.dart';
+import 'package:provider/provider.dart';
+import 'package:to_bee/services/timer_provider.dart';
 
-class PomodoroTimerPage extends StatelessWidget {
-  // Simulated tasks, these will come from API in the future
-  final List<Map<String, String>> tasks = [
-    {
-      'title': 'go to the gym',
-      'description': 'must do cardio exercises to lose weight',
-      'time': '00:42:21'
-    },
-    {
-      'title': 'أداء الفروض المنزلية',
-      'description':
-          'أداء الواجب المدرسي لمادة الرياضيات مع مذاكرة لمدة ساعتين لاختبار اللغة العربية',
-      'time': '00:42:21'
-    },
-    {
-      'title': 'Wireframe login',
-      'description': 'must finish login screen tobee app',
-      'time': '00:42:21'
-    },
-    {
-      'title': 'تعلم بعض من الألمانية',
-      'description': 'حتى تتمكن من العمل بالخارج',
-      'time': '00:42:21'
-    },
-  ];
+class PomodoroTimerPage extends StatefulWidget {
+  const PomodoroTimerPage({Key? key}) : super(key: key);
+
+  @override
+  State<PomodoroTimerPage> createState() => _PomodoroTimerPageState();
+}
+
+class _PomodoroTimerPageState extends State<PomodoroTimerPage> {
+  // Toggle for showing the 5-sec test button
+  bool _enable5SecTest = true;
+
+  // True = "Work Session", False = "Break"
+  bool _isWorkInterval = true;
 
   @override
   Widget build(BuildContext context) {
+    final timerProv = context.watch<TimerProvider>();
+    final formattedTime = timerProv.formatTime(timerProv.remainingSeconds);
+
     return Scaffold(
       backgroundColor: Colors.orange.shade50,
       appBar: PreferredSize(
@@ -57,75 +49,169 @@ class PomodoroTimerPage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            // Timer section at the top
+            // Timer display
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: Colors.orange.shade100,
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: const Row(
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  // Current time + label
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '00:32:10',
-                        style: TextStyle(
+                        formattedTime,
+                        style: const TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 5),
-                      Text('Project task'),
+                      const SizedBox(height: 5),
+                      Text(_isWorkInterval ? 'Work Session' : 'Break'),
                     ],
                   ),
-                  Icon(Icons.arrow_forward),
+                  // Timer controls
+                  Row(
+                    children: [
+                      IconButton(
+                        icon: Icon(
+                          timerProv.isRunning ? Icons.pause : Icons.play_arrow,
+                          color: Colors.black,
+                        ),
+                        onPressed: () {
+                          if (timerProv.isRunning) {
+                            timerProv.pauseTimer();
+                          } else {
+                            timerProv.startTimer();
+                          }
+                        },
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.stop, color: Colors.black),
+                        onPressed: () {
+                          timerProv.resetTimer();
+                          setState(() {
+                            _isWorkInterval = true;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
             const SizedBox(height: 20),
-            // Task list
-            Expanded(
-              child: ListView.builder(
-                itemCount: tasks.length,
-                itemBuilder: (context, index) {
-                  final task = tasks[index];
-                  return GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => TimerPage(
-                            taskTitle: task['title']!,
-                            taskDescription: task['description']!,
-                          ),
-                        ),
-                      );
+            // Buttons to set timer
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                if (_enable5SecTest) ...[
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.orange.shade100,
+                    ),
+                    onPressed: () {
+                      timerProv.setTimerSeconds(5);
+                      setState(() {
+                        _isWorkInterval = true;
+                      });
                     },
-                    child: Card(
-                      margin: const EdgeInsets.symmetric(vertical: 10),
-                      child: ListTile(
-                        leading: const Icon(Icons.timer, color: Colors.orange),
-                        title: Text(
-                          task['title']!,
-                          style: const TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-                        subtitle: Text(task['description']!),
-                        trailing: Text(task['time']!),
+                    child: const Text(
+                      '5 sec test',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                  );
-                },
-              ),
+                  ),
+                  const SizedBox(height: 10),
+                ],
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.orange.shade100,
+                  ),
+                  onPressed: () {
+                    timerProv.setTimerMinutes(5);
+                    setState(() {
+                      _isWorkInterval = false;
+                    });
+                  },
+                  child: const Text(
+                    '5 min short break',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.orange.shade100,
+                  ),
+                  onPressed: () {
+                    timerProv.setTimerMinutes(15);
+                    setState(() {
+                      _isWorkInterval = false;
+                    });
+                  },
+                  child: const Text(
+                    '15 min long break',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.orange.shade100,
+                  ),
+                  onPressed: () {
+                    timerProv.setTimerMinutes(30);
+                    setState(() {
+                      _isWorkInterval = false;
+                    });
+                  },
+                  child: const Text(
+                    '30 min longer break',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.orange.shade100,
+                  ),
+                  onPressed: () {
+                    timerProv.setTimerMinutes(25);
+                    setState(() {
+                      _isWorkInterval = true;
+                    });
+                  },
+                  child: const Text(
+                    '25 min productive time',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 1, // Index of the timer tab
+        currentIndex: 1,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -138,10 +224,6 @@ class PomodoroTimerPage extends StatelessWidget {
           BottomNavigationBarItem(
             icon: Icon(Icons.card_giftcard),
             label: 'Rewards',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: 'Notifications',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),

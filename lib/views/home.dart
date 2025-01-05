@@ -1,23 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:to_bee/services/provider.dart';
-//import 'package:to_bee/views/add_task.dart';
 import 'package:to_bee/views/pomodoro_timer_page.dart';
 import 'package:to_bee/views/profile.dart';
 import 'package:to_bee/views/rewards.dart';
-//import 'package:to_bee/views/tasks.dart';
 import 'package:to_bee/views/tasks2.dart';
-//import 'package:to_bee/views/task_deadlines_page.dart';
-//import 'package:flutter/material.dart';
-//import 'package:provider/provider.dart'; // For TaskProvider
-//import 'package:to_bee/services/provider.dart'; // Task state management
-//import 'package:to_bee/views/tasks.dart'; // TasksScreen
-//import 'package:to_bee/views/task_deadlines_page.dart'; // TaskDeadlinesPage
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:to_bee/views/notification.dart';
 
 class Home extends StatefulWidget {
+  const Home({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _HomeState createState() => _HomeState();
 }
 
@@ -26,18 +21,12 @@ class _HomeState extends State<Home> {
   final navigationKey = GlobalKey<CurvedNavigationBarState>();
 
   static final List<Widget> _pages = <Widget>[
-    HomePage(),
-    PomodoroTimerPage(),
-    RewardsPage(),
-    NotificationPage(),
-    Profile(),
+    const HomePage(),
+    const PomodoroTimerPage(),
+    const RewardsPage(),
+    const NotificationPage(),
+    const Profile(),
   ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,6 +62,8 @@ class _HomeState extends State<Home> {
 }
 
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     final taskProvider = Provider.of<TaskProvider>(context);
@@ -125,6 +116,7 @@ class HomePage extends StatelessWidget {
                     height: 150,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
+                      physics: const BouncingScrollPhysics(),
                       itemCount: taskProvider.tasks.length,
                       itemBuilder: (context, index) {
                         final task = taskProvider.tasks[index];
@@ -141,7 +133,7 @@ class HomePage extends StatelessWidget {
                     height: MediaQuery.of(context).size.height * 0.5,
                     child: ListView.builder(
                       shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
+                      physics: const BouncingScrollPhysics(),
                       itemCount: taskProvider.tasks.length,
                       itemBuilder: (context, index) {
                         final task = taskProvider.tasks[index];
@@ -167,20 +159,24 @@ class HomePage extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => AddTaskPage2(),
+                      builder: (context) => const AddTaskPage2(),
                     ),
                   );
                 },
                 minWidth: 130,
-                height: 47,
+                height: 40,
                 color: Colors.black,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
-                  side: const BorderSide(color: Colors.orange, width: 3),
+                  side: const BorderSide(color: Colors.black, width: 3),
                 ),
                 child: const Text(
                   "Add Task",
-                  style: TextStyle(color: Colors.orange),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 18,
+                  ),
                 ),
               ),
             ),
@@ -209,6 +205,7 @@ class HomePage extends StatelessWidget {
       child: Container(
         width: 200,
         decoration: BoxDecoration(
+          color: const Color(0xffFFD3B2),
           border: Border.all(color: Colors.orange, width: 3),
           borderRadius: BorderRadius.circular(12),
         ),

@@ -31,18 +31,19 @@ class _SettingState extends State<Setting> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange.shade50,
+      backgroundColor: Colors.deepOrange.shade50,
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(40),
+        preferredSize: const Size.fromHeight(50),
         child: ClipRRect(
           borderRadius: const BorderRadius.vertical(
             bottom: Radius.circular(30),
           ),
           child: AppBar(
-            backgroundColor: Colors.orange.shade100,
+            backgroundColor: Colors.deepOrange.shade100,
             elevation: 0,
             leading: IconButton(
-              icon: const Icon(Icons.arrow_back, color: Colors.orange),
+              icon: const Icon(Icons.arrow_circle_left_outlined,
+                  color: Colors.deepOrange, size: 40),
               onPressed: () {
                 Navigator.pop(context);
               },
@@ -51,7 +52,7 @@ class _SettingState extends State<Setting> {
             title: const Text(
               'Settings',
               style: TextStyle(
-                color: Colors.orange,
+                color: Colors.deepOrange,
                 fontWeight: FontWeight.w700,
                 fontSize: 25,
               ),
@@ -71,7 +72,7 @@ class _SettingState extends State<Setting> {
                   children: [
                     const Icon(
                       Icons.account_circle,
-                      color: Colors.orange,
+                      color: Colors.deepOrange,
                       size: 40,
                     ),
                     const SizedBox(width: 10),
@@ -95,7 +96,7 @@ class _SettingState extends State<Setting> {
                     padding: EdgeInsets.only(left: 40, top: 20),
                     child: Row(
                       children: [
-                        Icon(Icons.person, color: Colors.orange, size: 25),
+                        Icon(Icons.person, color: Colors.deepOrange, size: 25),
                         SizedBox(width: 10),
                         Text(
                           "Change Account Name",
@@ -117,7 +118,7 @@ class _SettingState extends State<Setting> {
                     padding: EdgeInsets.only(left: 40, top: 20),
                     child: Row(
                       children: [
-                        Icon(Icons.photo, color: Colors.orange, size: 25),
+                        Icon(Icons.photo, color: Colors.deepOrange, size: 25),
                         SizedBox(width: 10),
                         Text(
                           "Change Avatar",
@@ -139,7 +140,7 @@ class _SettingState extends State<Setting> {
                     padding: EdgeInsets.only(left: 40, top: 20),
                     child: Row(
                       children: [
-                        Icon(Icons.key, color: Colors.orange, size: 25),
+                        Icon(Icons.key, color: Colors.deepOrange, size: 25),
                         SizedBox(width: 10),
                         Text(
                           "Change Password",
@@ -161,7 +162,7 @@ class _SettingState extends State<Setting> {
                     padding: EdgeInsets.only(left: 40, top: 20),
                     child: Row(
                       children: [
-                        Icon(Icons.email, color: Colors.orange, size: 25),
+                        Icon(Icons.email, color: Colors.deepOrange, size: 25),
                         SizedBox(width: 10),
                         Text(
                           "Change Email",
@@ -182,7 +183,7 @@ class _SettingState extends State<Setting> {
                 child: Row(
                   children: [
                     const Icon(Icons.notifications,
-                        color: Colors.orange, size: 40),
+                        color: Colors.deepOrange, size: 40),
                     const SizedBox(width: 10),
                     Text(
                       _isSettingsExpanded ? 'Notifications' : 'Notifications',
@@ -201,7 +202,7 @@ class _SettingState extends State<Setting> {
                 onPressed: _toggleSettingsExpansion,
                 child: Row(
                   children: [
-                    const Icon(Icons.tune, color: Colors.orange, size: 40),
+                    const Icon(Icons.tune, color: Colors.deepOrange, size: 40),
                     const SizedBox(width: 10),
                     Text(
                       _isSettingsExpanded ? 'Preferences' : 'Preferences',
