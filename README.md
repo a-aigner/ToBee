@@ -119,3 +119,6 @@ added functionallity to the Pomodoro Timer feature and sound when timer is due.
 added functionallity to the add Tasks. Also changed the layout of the Tasks page.
 ![picture not found](mdimg/task_homepage.png)
 ![picture not found](mdimg/add_task.png)
+
+### UI/UX Changes
+the login screen and onboarding has been removed an the existing pages have been redesigned
