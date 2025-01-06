@@ -113,7 +113,7 @@ click run and debug in VSCode to start the application
 
 ### Pomodoro Timer
 added functionallity to the Pomodoro Timer feature and sound when timer is due.
-![picture not found](mdimg/pomodoro_timer.png.png)
+![picture not found](mdimg/pomodoro_timer.png)
 
 ### Tasks
 added functionallity to the add Tasks. Also changed the layout of the Tasks page.
