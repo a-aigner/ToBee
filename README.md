@@ -106,6 +106,5 @@ flutter pub get
 ```
 
 ### Run and Debug
-
-click run and debug in VSCode
+click run and debug in VSCode to start the application
 ---
