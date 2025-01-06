@@ -39,68 +39,6 @@ The app follows the **MVC (Model-View-Controller)** architecture to separate con
 
 ---
 
-### File Structure
-
-
-
-lib/
-
-│── assets/
-│   ├── images/
-│
-│
-│── constants
-│
-├── controllers/
-│   ├── gamification_controller.dart
-│   ├── pomodoro_controller.dart
-│   ├── progress_report_controller.dart
-│   ├── recommendation_controller.dart
-│   ├── todo_controller.dart
-│
-│   
-│  
-│
-├── models/
-│   ├── progress_report_model.dart
-│   ├── recommendation_model.dart
-│   ├── reward_model.dart
-│   ├── task_model.dart
-│   
-│
-├── services/
-│   ├── ai_recommendation_service.dart
-│   ├── notification_service.dart
-│   └── pomodoro_timer_service.dart
-│
-├── utils
-│
-├── views/
-│   ├── home_page.dart
-│   ├── login_screen.dart
-│   ├── on_boarding.dart
-│   ├── pomodoro_timer.dart
-│   ├── profile.dart
-│   ├── progress_reports_view.dart
-│   ├── recommendations_view.dart
-│   ├── rewards.dart
-│   ├── sign_up.dart
-│   ├── tasks.dart
-│
-│── widgets/
-│   ├── ai_recommendation_widget.dart
-│   ├── pomodoro_timer_widget.dart
-│   ├── progress_report_widget.dart
-│   ├── reward_widget.dart
-│   ├── task_input_form.dart
-│   ├── task_item.dart
-│
-├── main.dart
-│     
-
-
----
-
 ### Integration Between AI and Software
 
 The AI system is responsible for providing personalized task recommendations based on several parameters like:
@@ -166,4 +104,8 @@ run
 ```bash
 flutter pub get
 ```
+
+### Run and Debug
+
+click run and debug in VSCode
 ---
