@@ -153,4 +153,17 @@ The AI engine connects to the app via a backend API. Data sent includes task det
 - Dart SDK installed
 - Android Studio or Xcode (for iOS development)
 
+### Clone the Repository
+run this in terminal
+```bash
+git clone https://github.com/a-aigner/ToBee.git
+```
+navigate into the project folder
+```bash
+cd ToBee
+```
+run 
+```bash
+flutter pub get
+```
 ---
